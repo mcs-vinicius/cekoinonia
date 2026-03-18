@@ -12,92 +12,72 @@ const Hero = () => {
     "https://ik.imagekit.io/wzl99vhez/Koinonia/WhatsApp%20Image%202026-03-18%20at%2010.57.05.jpeg"
   ];
 
-  // Separamos o estado: a base (o que está fixo) e a próxima (o que vai animar)
   const [baseIndex, setBaseIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState(0);
-  
   const containerRef = useRef(null);
-  const foregroundRef = useRef(null);
   const masksRef = useRef([]);
 
   const nextSlide = useCallback(() => {
-    // Aciona a mudança apenas para a variável da animação
     setNextIndex((prev) => (prev + 1) % images.length);
   }, [images.length]);
 
-  // 1. ANIMAÇÃO DO TEXTO (Corre apenas UMA VEZ e fica fixo)
+  // Lógica da Transição Circular (Os Discos que giram)
   useGSAP(() => {
-    gsap.fromTo(foregroundRef.current, 
-      { opacity: 0, y: 50 }, 
-      { opacity: 1, y: 0, duration: 1.8, ease: "power3.out", delay: 0.5 }
-    );
-  }, { scope: containerRef }); 
-
-  // 2. ANIMAÇÃO DOS DISCOS (A Mágica da Transição)
-  useGSAP(() => {
-    // Evita rodar no primeiro carregamento da página
     if (baseIndex === nextIndex) return;
 
     const masks = masksRef.current;
-    if (!masks.length) return;
-
     const tl = gsap.timeline({
       onComplete: () => {
-        // O segredo está aqui: A imagem base só é atualizada DEPOIS que a animação termina
         setBaseIndex(nextIndex);
+        gsap.set(masks, { autoAlpha: 0 });
       }
     });
 
-    // Estado inicial: Os discos começam invisíveis, levemente ampliados e rotacionados
+    // Configuração inicial dos discos (escondidos e rotacionados)
     tl.set(masks, { 
       autoAlpha: 0, 
-      scale: 1.15, 
-      rotation: (i) => (i % 2 === 0 ? -180 : 180) 
+      scale: 1.1, 
+      rotation: (i) => (i % 2 === 0 ? -120 : 120) 
     });
 
-    // A Animação em si: Os discos aparecem revelando a nova imagem
+    // Animação de revelação circular
     tl.to(masks, {
-      duration: 3.8, // Duração longa para leveza
-      autoAlpha: 1,  // Revela a imagem enquanto gira
-      scale: 1, 
-      rotation: 0, 
-      ease: "expo.out", // Desaceleração muito suave no final
-      stagger: {
-        each: 0.25, 
-        from: "center" 
-      }
+      duration: 3,
+      autoAlpha: 1,
+      scale: 1,
+      rotation: 0,
+      ease: "power2.inOut",
+      stagger: { each: 0.15, from: "center" }
     });
 
-  }, { dependencies: [nextIndex], scope: containerRef }); 
+  }, { dependencies: [nextIndex], scope: containerRef });
 
   useEffect(() => {
-    // Ajustei o timer para 8 segundos para dar tempo de contemplar a imagem
-    const timer = setInterval(nextSlide, 8000); 
-    return () => clearInterval(timer); 
+    const timer = setInterval(nextSlide, 7000);
+    return () => clearInterval(timer);
   }, [nextSlide]);
 
   return (
-    <Box 
-      ref={containerRef}
-      className="relative flex items-center justify-center min-h-screen w-full bg-church-dark overflow-hidden"
-    >
-      {/* CAMADA BASE: Mostra a imagem estática antiga */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-300"
-        style={{ backgroundImage: `url(${images[baseIndex]})` }}
-      />
+    <Box ref={containerRef} className="atmospheric-hero relative w-full h-screen overflow-hidden bg-black">
       
-      {/* CAMADA DE ANIMAÇÃO: Os 4 discos com a NOVA imagem que vão sobrepor a camada base */}
+      {/* CAMADA 1: Imagem Base (A que está saindo) */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-30"
+        style={{ backgroundImage: `url(${images[baseIndex]})`, zIndex: 1 }}
+      />
+
+      {/* CAMADA 2: Os 4 Discos de Transição (A que está entrando) */}
       {[...Array(4)].map((_, i) => (
         <div 
           key={i}
           ref={el => masksRef.current[i] = el}
-          // Opacity 0 inicial no Tailwind para evitar piscar antes da animação
-          className="absolute inset-0 z-20 pointer-events-none opacity-0"
+          className="absolute inset-0 opacity-0"
           style={{ 
             backgroundImage: `url(${images[nextIndex]})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            opacity: 0.3,
+            zIndex: 10,
             WebkitMaskImage: `radial-gradient(circle at center, ${
               i === 0 ? 'black 20%, transparent 20.1%' : 
               i === 1 ? 'transparent 20%, black 20.1%, black 40%, transparent 40.1%' : 
@@ -114,34 +94,50 @@ const Hero = () => {
         />
       ))}
 
-      {/* Sobreposição escura (Filtro) para destacar o texto */}
-      <div className="absolute inset-0 bg-black/75 z-30 pointer-events-none" />
+      {/* CAMADA 3: Elementos Decorativos "Umbra" */}
+      <div className="geometric-bg" style={{ zIndex: 15 }}>
+        <div className="geo-circle"></div>
+        <div className="geo-circle"></div>
+        <div className="geo-circle"></div>
+      </div>
 
-      {/* CONTEÚDO FIXO NA FRENTE */}
-      <Box ref={foregroundRef} className="relative z-40 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
-        
-        <Typography 
-          variant="overline" 
-          className="text-church-gold tracking-[0.3em] mb-4 font-sans font-medium"
-        >
-          IGREJA EVANGÉLICA KOINONIA
+      <div className="diamond-ornament" style={{ zIndex: 20 }}></div>
+      <div className="diamond-ornament" style={{ zIndex: 20 }}></div>
+      <div className="diamond-ornament" style={{ zIndex: 20 }}></div>
+      <div className="diamond-ornament" style={{ zIndex: 20 }}></div>
+
+      <div className="vertical-divider" style={{ zIndex: 20 }}></div>
+      <div className="vertical-divider" style={{ zIndex: 20 }}></div>
+
+      <div className="dust-particles" style={{ zIndex: 25 }}>
+        {[...Array(8)].map((_, i) => <div key={i} className="dust"></div>)}
+      </div>
+
+      <div className="ink-drop" style={{ zIndex: 25 }}></div>
+      <div className="ink-drop" style={{ zIndex: 25 }}></div>
+      
+      <div className="fog" style={{ zIndex: 30 }}></div>
+
+      {/* CAMADA 4: Conteúdo Central */}
+      <div className="hero-content" style={{ zIndex: 50 }}>
+        <div className="top-symbol">❋</div>
+        <p className="pre-title">Igreja Evangélica</p>
+        <Typography variant="h1" sx={{ 
+          fontFamily: 'Cinzel', 
+          fontSize: { xs: '3.5rem', md: '7rem' },
+          letterSpacing: '0.2em',
+          fontWeight: 700,
+          color: '#fff',
+          textShadow: '0 0 40px rgba(212, 175, 55, 0.3)'
+        }}>
+          KOINONIA
         </Typography>
-
-        <Typography 
-          variant="h1" 
-          className="text-white font-serif drop-shadow-2xl"
-          sx={{ 
-            fontSize: { xs: '3.5rem', md: '6rem', lg: '7.5rem' },
-            fontWeight: 400,
-            letterSpacing: '0.05em',
-            lineHeight: 1.1,
-            textTransform: 'uppercase'
-          }}
-        >
-          We Are The <br/> <span className="text-church-gold italic">People</span>
-        </Typography>
-
-      </Box>
+        <div className="accent-line"></div>
+        <p className="hero-description">
+          We Are The People...
+        </p>
+        <div className="bottom-symbol">⚜</div>
+      </div>
     </Box>
   );
 };

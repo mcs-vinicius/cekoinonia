@@ -5,7 +5,7 @@ import Leaders from '../components/Leaders';
 import Schedule from '../components/Schedule';
 import OnlineGiving from '../components/OnlineGiving';
 import Ministries from '../components/Ministries';
-import News from '../components/News'; // Agora com a importação perfeitamente alinhada
+import NewsSection from '../components/NewsSection';
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
       <Schedule />
       <OnlineGiving />
       <Ministries />
-      <News />
+      <NewsSection />
     </>
   );
 };

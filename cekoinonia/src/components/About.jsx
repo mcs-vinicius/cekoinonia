@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
-// Ícones mais finos e elegantes do Material UI
 import ChurchOutlinedIcon from '@mui/icons-material/ChurchOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
@@ -67,16 +66,14 @@ const About = () => {
               {/* Título do Cartão */}
               <Typography 
                 variant="h6" 
-                // Como fica:
                 className="text-white font-serif tracking-widest uppercase mb-4"
                 sx={{ fontSize: '1.1rem' }}
               >
                 {card.title}
               </Typography>
               
-              {/* Linha Divisória Dourada (Detalhe elegante do modelo original) */}
-              // Como fica:
-            <div className="w-12 h-px bg-church-gold opacity-50 mb-6"></div>
+              {/* Linha Divisória Dourada */}
+              <div className="w-12 h-px bg-church-gold opacity-50 mb-6"></div>
               
               {/* Texto Descritivo */}
               <Typography 
@@ -85,7 +82,7 @@ const About = () => {
                 sx={{ 
                   fontSize: '13px', 
                   lineHeight: 1.8,
-                  maxWidth: '85%' // Impede que o texto fique muito largo
+                  maxWidth: '85%' 
                 }}
               >
                 {card.text}

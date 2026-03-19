@@ -5,6 +5,7 @@ import Leaders from '../components/Leaders';
 import Schedule from '../components/Schedule';
 import OnlineGiving from '../components/OnlineGiving';
 import Ministries from '../components/Ministries';
+import LocationSection from '../components/LocationSection'; // <-- Importar aqui
 import NewsSection from '../components/NewsSection';
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <About />
       <Leaders />
       <Schedule />
+      <LocationSection /> 
       <OnlineGiving />
       <Ministries />
       <NewsSection />

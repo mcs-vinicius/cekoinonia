@@ -15,10 +15,9 @@ function App() {
       <div className="min-h-screen bg-church-dark flex flex-col">
         <Header />
         
-        <main className="flex-grow">
+        <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* Adicionamos a rota para a página Sobre Nós */}
             <Route path="/sobre" element={<AboutPage />} /> 
           </Routes>
         </main>

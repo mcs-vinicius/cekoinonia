@@ -5,31 +5,29 @@ const Schedule = () => {
   // Lista de horários/eventos da igreja
   const scheduleData = [
     {
-      day: 'DOMINGO',
-      time: '09:00',
-      title: 'Escola Bíblica Dominical',
-      description: 'Um tempo de estudo profundo da Palavra de Deus para todas as idades, preparando-nos para os desafios do dia a dia.',
-      highlighted: false
+      day: 'Domingo',
+      time: '09:00 & 18:00',
+      title: 'Culto da Familia',
+      description: (
+        <>
+          Todo 1° Domingo: Culto de Jovens.<br />
+          Todo 2° Domingo: Culto de Ceia.
+        </>
+      ),
+      highlighted: true
     },
     {
-      day: 'DOMINGO',
-      time: '18:30',
-      title: 'Culto de Celebração',
-      description: 'O nosso culto principal. Um momento de muito louvor, adoração e uma mensagem impactante para a sua semana.',
-      highlighted: true // Este é o cartão que ficará com fundo dourado (como no modelo)
-    },
-    {
-      day: 'TERÇA-FEIRA',
+      day: 'Segunda-FEIRA',
       time: '20:00',
-      title: 'Culto de Ensino',
-      description: 'Reunião dedicada ao estudo teológico e aprofundamento nas Escrituras Sagradas.',
+      title: 'Reunião de Oração',
+      description: 'Reunião dedicada a oração, intercessão e estudo bíblico para fortalecer nossa fé e comunhão.',
       highlighted: false
     },
     {
       day: 'QUINTA-FEIRA',
       time: '20:00',
-      title: 'Culto de Oração',
-      description: 'Um encontro focado na intercessão, oração em comunidade e busca pelo poder do Espírito Santo.',
+      title: 'Culto DE ESTUDO',
+      description: 'Um encontro focado no estudo aprofundado da Bíblia, onde exploramos as Escrituras para crescer em conhecimento e fé.',
       highlighted: false
     }
   ];

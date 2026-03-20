@@ -118,7 +118,7 @@ const Leaders = () => {
       >
         {selectedLeader && (
           // Container Principal do Modal: 600px de altura cravados no desktop
-          <div className="relative flex flex-col md:flex-row w-full max-h-[90vh] md:h-[600px] bg-black/80 backdrop-blur-xl border border-white/10 overflow-hidden">
+          <div className="relative flex flex-col md:flex-row w-full max-h-[90vh] md:h-150 bg-black/80 backdrop-blur-xl border border-white/10 overflow-hidden">
             
             {/* Botão de Fechar Absoluto */}
             <IconButton 
@@ -129,7 +129,7 @@ const Leaders = () => {
             </IconButton>
 
             {/* LADO ESQUERDO: A FOTO (Fixa, nunca colapsa) */}
-            <div className="w-full md:w-5/12 h-[350px] md:h-full shrink-0">
+            <div className="w-full md:w-5/12 h-87.5 md:h-full shrink-0 relative">
               <img 
                 src={selectedLeader.image} 
                 alt={selectedLeader.name}

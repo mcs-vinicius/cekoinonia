@@ -123,7 +123,7 @@ const Hero = () => {
       <div className="hero-content" style={{ zIndex: 50 }}>
         
         {/* Cruz (Símbolo de Topo) */}
-        <div className="top-symbol"style={{ fontSize: '35px' }}>✟</div>
+        <div className="top-symbol"style={{ fontSize: '45px'}}>✟</div>
         
         <p className="pre-title">Igreja Evangélica</p>
         
@@ -133,11 +133,11 @@ const Hero = () => {
         <div className="accent-line"></div>
         
         <p className="hero-description" style={{ marginRight: '-1px' }}>
-          We Are The People...
+          Vivendo em comunhão...
         </p>
 
         {/* Coração (Símbolo de Fundo) */}
-        <div className="bottom-symbol" style={{ fontSize: '35px' }}>♥</div>
+        <div className="bottom-symbol" style={{ fontSize: '45px' }}>♥</div>
         
       </div>
     </div>

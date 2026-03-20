@@ -7,7 +7,9 @@ import Footer from './components/Footer';
 
 // Páginas
 import Home from './pages/Home';
-import AboutPage from './pages/AboutPage'; // <-- Importar a nova página
+import AboutPage from './pages/AboutPage'; 
+import MinistriesPage from './pages/MinistriesPage'; // <-- Novo
+import GivingPage from './pages/GivingPage'; // <-- Novo
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobre" element={<AboutPage />} /> 
+            <Route path="/ministerios" element={<MinistriesPage />} /> 
+            <Route path="/doacoes" element={<GivingPage />} /> 
           </Routes>
         </main>
 

@@ -145,7 +145,7 @@ body {
     color: rgba(212, 175, 55, 0.6);
     margin-bottom: 35px;
     opacity: 0;
-    animation: symbolAppear 1.5s ease forwards 0.2s;
+    animation: symbolAppear 1.5s ease-in forwards  0.3s;
     filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
 }
 
@@ -159,7 +159,7 @@ body {
 }
 
 @keyframes symbolAppear {
-    from { opacity: 0; transform: translateY(-30px) rotate(-180deg); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0) rotate(0deg); }
 }
 

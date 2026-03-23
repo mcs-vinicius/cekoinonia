@@ -8,6 +8,9 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import { Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 
+// Importando a foto do logo
+import logoImg from '../assets/logok.png'; 
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -23,24 +26,19 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // =========================================================================
-  // VALIDAÇÃO DE HORÁRIO DE CULTO (Sem uso de API)
-  // =========================================================================
   useEffect(() => {
     const checkLiveStatus = () => {
       const now = new Date();
-      const day = now.getDay(); // 0 = Domingo, 1 = Segunda ... 4 = Quinta
+      const day = now.getDay(); 
       const hours = now.getHours();
       const minutes = now.getMinutes();
       const timeInMinutes = hours * 60 + minutes;
 
       let isServiceTime = false;
 
-      // 1. Quinta-Feira: 20:00 (1200) às 21:00 (1260)
       if (day === 4) {
         isServiceTime = timeInMinutes >= 1200 && timeInMinutes <= 1260;
       } 
-      // 2. Domingo: 09:00 (540) às 10:30 (630) OU 18:00 (1080) às 21:00 (1260)
       else if (day === 0) {
         const isMorning = timeInMinutes >= 540 && timeInMinutes <= 630;
         const isEvening = timeInMinutes >= 1080 && timeInMinutes <= 1260;
@@ -50,14 +48,10 @@ const Header = () => {
       setIsLive(isServiceTime);
     };
 
-    // Executa assim que o Header carrega
     checkLiveStatus();
-    
-    // Verifica a cada minuto para atualizar o botão em tempo real caso a pessoa deixe o site aberto
     const intervalId = setInterval(checkLiveStatus, 60 * 1000); 
     return () => clearInterval(intervalId);
   }, []);
-  // =========================================================================
 
   useEffect(() => {
     if (!menuRef.current) return;
@@ -76,12 +70,17 @@ const Header = () => {
     if (el && !linksRef.current.includes(el)) linksRef.current.push(el);
   };
 
+  const handleNavigation = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (mobileOpen) setMobileOpen(false);
+  };
+
   const isHomePage = location.pathname === '/';
-  const headerBackground = (scrolled || !isHomePage) ? 'rgba(5, 5, 5, 0.85)' : 'transparent';
-  const headerBackdrop = (scrolled || !isHomePage) ? 'blur(16px) saturate(180%)' : 'none';
-  const headerPadding = (scrolled || !isHomePage) ? '8px 0' : '18px 0';
-  const headerBorder = (scrolled || !isHomePage) ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent';
-  const headerShadow = (scrolled || !isHomePage) ? '0 4px 30px rgba(0, 0, 0, 0.3)' : 'none';
+  const headerBackground = mobileOpen ? 'transparent' : ((scrolled || !isHomePage) ? 'rgba(5, 5, 5, 0.85)' : 'transparent');
+  const headerBackdrop = mobileOpen ? 'none' : ((scrolled || !isHomePage) ? 'blur(16px) saturate(180%)' : 'none');
+  const headerPadding = (scrolled || !isHomePage) ? '10px 0' : '20px 0';
+  const headerBorder = mobileOpen ? '1px solid transparent' : ((scrolled || !isHomePage) ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid transparent');
+  const headerShadow = mobileOpen ? 'none' : ((scrolled || !isHomePage) ? '0 10px 30px rgba(0, 0, 0, 0.5)' : 'none');
 
   const navLinks = [
     { title: 'Início', path: '/' },
@@ -91,8 +90,6 @@ const Header = () => {
   ];
 
   const youtubeLink = "https://www.youtube.com/@cekoinonia1522/live";
-
-  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   return (
     <>
@@ -111,18 +108,71 @@ const Header = () => {
         }}
       >
         <Container maxWidth="xl">
-          <Toolbar disableGutters className="w-full flex justify-between md:justify-center items-center min-h-12.5 relative">
+          <Toolbar disableGutters className="w-full flex justify-between items-center min-h-12 relative">
             
-            <Box className="flex md:hidden items-center ml-2">
-               <Typography variant="h6" className="font-serif text-[#d4af37] tracking-widest text-sm">
-                 KOINONIA
-               </Typography>
+            <Box className="flex items-center">
+               <Link to="/" onClick={handleNavigation} className="group flex items-center">
+                 <img 
+                    src={logoImg} 
+                    alt="Logo Koinonia" 
+                    className="h-15 md:h-15 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+                 />
+               </Link>
             </Box>
 
-            <Box className="flex md:hidden mr-2 z-50">
+            <Box className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex-row items-center space-x-10">
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <Link 
+                    key={link.title} 
+                    to={link.path}
+                    onClick={handleNavigation}
+                    className={`relative text-[11px] font-sans tracking-[0.2em] uppercase font-bold transition-all duration-300 py-2 group ${
+                      isActive ? 'text-[#d4af37]' : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    {link.title}
+                    
+                    {/* Alterado de h-[2px] para h-0.5 */}
+                    <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.8)] transition-transform duration-300 origin-left ${
+                      isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100 group-hover:bg-white'
+                    }`}></span>
+                  </Link>
+                );
+              })}
+            </Box>
+
+            <a 
+              href={youtubeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hidden md:flex items-center gap-3 px-6 py-2 rounded-full border transition-all duration-500 group ${
+                isLive 
+                  ? 'border-[#d4af37]/50 bg-[#d4af37]/5 hover:bg-[#d4af37] hover:border-[#d4af37]'
+                  : 'border-white/10 hover:border-white/30 hover:bg-white/5' 
+              }`}
+            >
+              {isLive ? (
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75 group-hover:bg-black"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#d4af37] group-hover:bg-black transition-colors"></span>
+                </span>
+              ) : (
+                <YouTubeIcon sx={{ fontSize: 18 }} className="text-gray-400 group-hover:text-white transition-colors" />
+              )}
+              
+              <Typography variant="button" className={`text-[10px] tracking-[0.2em] uppercase font-sans font-bold transition-colors ${
+                isLive ? 'text-[#d4af37] group-hover:text-black' : 'text-gray-400 group-hover:text-white'
+              }`}>
+                {isLive ? 'Ao Vivo' : 'Canal'}
+              </Typography>
+            </a>
+
+            <Box className="flex md:hidden z-50">
               <IconButton 
                 size="large" 
-                onClick={handleDrawerToggle}
+                onClick={() => setMobileOpen(!mobileOpen)}
                 disableRipple
                 sx={{ color: mobileOpen ? 'white' : '#d4af37' }}
               >
@@ -130,78 +180,44 @@ const Header = () => {
               </IconButton>
             </Box>
 
-            <Box className="hidden md:flex flex-row items-center justify-center space-x-12 w-full">
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.title} 
-                  to={link.path}
-                  className="text-[11px] text-gray-300 hover:text-white transition-colors font-sans tracking-[0.25em] uppercase font-medium"
-                >
-                  {link.title}
-                </Link>
-              ))}
-            </Box>
-
-            <a 
-              href={youtubeLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`hidden md:flex absolute right-2 lg:right-4 items-center gap-3 px-5 py-2.5 border transition-all duration-500 group ${
-                isLive 
-                  ? 'border-[#d4af37]/40 hover:bg-[#d4af37]'
-                  : 'border-white/10 hover:border-white/30' 
-              }`}
-            >
-              {isLive ? (
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#d4af37] group-hover:bg-black transition-colors"></span>
-                </span>
-              ) : (
-                <YouTubeIcon sx={{ fontSize: 16 }} className="text-gray-400 group-hover:text-white transition-colors" />
-              )}
-              
-              <Typography variant="button" className={`text-[10px] tracking-[0.2em] uppercase font-sans font-bold transition-colors ${
-                isLive ? 'text-[#d4af37] group-hover:text-black' : 'text-gray-400 group-hover:text-white'
-              }`}>
-                {isLive ? 'Estamos Ao Vivo' : 'Nosso Canal'}
-              </Typography>
-            </a>
           </Toolbar>
         </Container>
       </AppBar>
 
       <Box 
         ref={menuRef}
-        // Tailwind classes adjusted
-        className="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl flex flex-col justify-center px-8 z-1200 opacity-0 pointer-events-none md:hidden"
+        style={{ zIndex: 1200 }}
+        className="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl flex flex-col justify-center px-8 opacity-0 pointer-events-none md:hidden"
       >
-        {/* Tailwind classes adjusted */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-75 h-75 bg-[#d4af37]/5 blur-[100px] pointer-events-none rounded-full"></div>
 
         <ul className="flex flex-col gap-8 w-full relative z-10 text-center">
-          {navLinks.map((link) => (
-            <li key={link.title} ref={addToRefs}>
-              <Link 
-                to={link.path} 
-                onClick={handleDrawerToggle}
-                className="text-white font-serif text-3xl tracking-widest uppercase hover:text-[#d4af37] transition-colors inline-block"
-              >
-                {link.title}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path;
+            return (
+              <li key={link.title} ref={addToRefs}>
+                <Link 
+                  to={link.path} 
+                  onClick={handleNavigation}
+                  className={`font-serif text-3xl tracking-widest uppercase transition-colors inline-block ${
+                    isActive ? 'text-[#d4af37]' : 'text-white hover:text-[#d4af37]'
+                  }`}
+                >
+                  {link.title}
+                </Link>
+              </li>
+            );
+          })}
 
           <li ref={addToRefs} className="w-16 h-px bg-white/20 mx-auto my-4"></li>
 
-          {/* Tailwind classes adjusted */}
           <li ref={addToRefs} className="w-full max-w-75 mx-auto">
             <a 
               href={youtubeLink}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={handleDrawerToggle}
-              className={`w-full flex items-center justify-center gap-4 py-5 border transition-all duration-300 group ${
+              onClick={handleNavigation}
+              className={`w-full flex items-center justify-center gap-4 py-4 rounded-full border transition-all duration-300 group ${
                 isLive 
                   ? 'border-[#d4af37] bg-[#d4af37]/10 text-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.15)]'
                   : 'border-white/20 text-gray-400 hover:border-white/50'
@@ -216,7 +232,7 @@ const Header = () => {
                 <YouTubeIcon sx={{ fontSize: 24 }} />
               )}
 
-              <span className="font-sans tracking-[0.25em] uppercase text-[14px] font-bold">
+              <span className="font-sans tracking-[0.25em] uppercase text-[12px] font-bold">
                 {isLive ? 'Estamos Ao Vivo' : 'Nosso Canal'}
               </span>
             </a>

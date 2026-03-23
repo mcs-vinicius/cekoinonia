@@ -54,6 +54,7 @@ const Schedule = () => {
         onComplete: () => {
           if (userOverride.current) return;
           
+          
           // Efeito de Demonstração Suave
           demoTimeouts.push(setTimeout(() => { if (!userOverride.current) setActivePanel(2); }, 2500));
           demoTimeouts.push(setTimeout(() => { if (!userOverride.current) setActivePanel(3); }, 4000));

@@ -19,7 +19,7 @@ const Schedule = () => {
       day: 'DOMINGO',
       time: '09:00 & 18:00',
       title: 'Culto da Família',
-      description: 'Todo 1° Domingo: Culto de Jovens.\nTodo 2° Domingo: Culto de Ceia.\nTraga a sua família para um momento de comunhão.',
+      description: 'Todo 1° Domingo: Culto de Jovens.\nTodo 2° Domingo: Culto de Ceia.\nTodo 3° e 4° Domingo: Culto da Familia.',
       image: 'https://images.unsplash.com/photo-1438283173091-5dbf5c5a3206?q=80&w=1000&auto=format&fit=crop'
     },
     {

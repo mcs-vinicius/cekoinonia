@@ -43,7 +43,7 @@ const GivingPage = () => {
     <div ref={pageRef} className="bg-[#050505] min-h-screen pt-32 pb-32 relative overflow-hidden flex flex-col items-center">
       
       {/* Halo Dourado de Fundo */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-[#d4af37]/5 blur-[150px] pointer-events-none rounded-full z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-church-gold/5 blur-[150px] pointer-events-none rounded-full z-0"></div>
 
       <Container maxWidth="md" className="relative z-10 flex flex-col items-center">
         
@@ -51,13 +51,13 @@ const GivingPage = () => {
             1. CABEÇALHO 
             ===================================================================== */}
         <Box className="text-center mb-16 px-4">
-          <Typography variant="h6" className="anim-item text-[#d4af37] tracking-[0.4em] font-serif mb-4 uppercase text-sm opacity-0">
+          <Typography variant="h6" className="anim-item text-church-gold tracking-[0.4em] font-serif mb-4 uppercase text-sm opacity-0">
             Adoração em Ação
           </Typography>
           <Typography variant="h2" className="anim-item text-white font-serif tracking-widest uppercase mb-8 opacity-0" sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' } }}>
-            Dízimos & <span className="text-[#d4af37] italic">Ofertas</span>
+            Dízimos & <span className="text-church-gold italic">Ofertas</span>
           </Typography>
-          <div className="anim-item w-24 h-px bg-[#d4af37]/30 opacity-0 mx-auto mb-8"></div>
+          <div className="anim-item w-24 h-px bg-church-gold/30 opacity-0 mx-auto mb-8"></div>
           <Typography variant="body1" className="anim-item opacity-0 text-gray-400 font-sans tracking-wide max-w-xl mx-auto leading-relaxed" sx={{ fontSize: { xs: '13px', md: '14px' } }}>
             A sua generosidade permite-nos continuar a nossa missão e expandir o Reino. Utilize o nosso cartão interativo abaixo para encontrar os dados de contribuição.
           </Typography>
@@ -70,7 +70,7 @@ const GivingPage = () => {
         <div className="flip-card-container opacity-0 relative w-full max-w-[420px] h-[520px] perspective-[1500px] mb-12">
           
           {/* Brilho de fundo (Halo) dinâmico que acompanha o cartão */}
-          <div className="absolute -inset-4 bg-linear-to-r from-[#d4af37]/0 via-[#d4af37]/20 to-[#d4af37]/0 rounded-3xl blur-2xl opacity-70 pointer-events-none"></div>
+          <div className="absolute -inset-4 bg-linear-to-r from-church-gold/0 via-church-gold/20 to-church-gold/0 rounded-3xl blur-2xl opacity-70 pointer-events-none"></div>
 
           {/* O Cartão em si (Onde a rotação acontece) */}
           <div 
@@ -94,8 +94,8 @@ const GivingPage = () => {
 
               {/* Topo do Cartão Frontal */}
               <div className="flex justify-between items-start relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-[#d4af37]/10 flex items-center justify-center border border-[#d4af37]/30">
-                  <QrCode2OutlinedIcon sx={{ color: '#d4af37' }} />
+                <div className="w-12 h-12 rounded-xl bg-church-gold/10 flex items-center justify-center border border-church-gold/30">
+                  <QrCode2OutlinedIcon sx={{ color: 'var(--color-church-gold)' }} />
                 </div>
                 <Typography variant="overline" sx={{ color: 'white' }} className="font-sans tracking-widest text-[10px] uppercase font-bold bg-white/10 px-3 py-1 rounded-full">
                   Instantâneo
@@ -106,8 +106,8 @@ const GivingPage = () => {
               <div className="flex flex-col items-center justify-center my-6 relative z-10">
                 <div className="w-32 h-32 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center shadow-inner relative overflow-hidden">
                   {/* Padrão estilo QR simplificado */}
-                  <div className="absolute inset-4 border-2 border-[#d4af37]/30 rounded flex items-center justify-center">
-                    <QrCode2OutlinedIcon sx={{ fontSize: 60, color: '#d4af37', opacity: 0.8 }} />
+                  <div className="absolute inset-4 border-2 border-church-gold/30 rounded flex items-center justify-center">
+                    <QrCode2OutlinedIcon sx={{ fontSize: 60, color: 'var(--color-church-gold)', opacity: 0.8 }} />
                   </div>
                 </div>
               </div>
@@ -120,7 +120,7 @@ const GivingPage = () => {
                 <button 
                   onClick={handleCopyPix}
                   className={`w-full flex items-center justify-center gap-3 p-4 rounded-xl border transition-all duration-300 ${
-                    copied ? 'bg-[#d4af37] border-[#d4af37] text-black' : 'bg-white/5 border-white/10 hover:border-[#d4af37]/50 text-white hover:bg-white/10'
+                    copied ? 'bg-church-gold border-church-gold text-black' : 'bg-white/5 border-white/10 hover:border-church-gold/50 text-white hover:bg-white/10'
                   }`}
                 >
                   <Typography variant="body1" className="font-sans tracking-widest text-sm font-bold">
@@ -135,7 +135,7 @@ const GivingPage = () => {
                 LADO DE TRÁS (CONTA BANCÁRIA)
                 ----------------------------------------------------------------- */}
             <Box 
-              className="absolute inset-0 w-full h-full bg-[#0a0a0a]/90 backdrop-blur-2xl border border-[#d4af37]/30 rounded-3xl p-8 flex flex-col justify-between shadow-[0_20px_50px_rgba(212,175,55,0.1)]"
+              className="absolute inset-0 w-full h-full bg-[#0a0a0a]/90 backdrop-blur-2xl border border-church-gold/30 rounded-3xl p-8 flex flex-col justify-between shadow-[0_20px_50px_rgba(212,175,55,0.1)]"
               style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
             >
               {/* Topo do Cartão Traseiro */}
@@ -143,7 +143,7 @@ const GivingPage = () => {
                 <Typography variant="h5" sx={{ color: 'white' }} className="font-serif tracking-widest uppercase">
                   TED / DOC
                 </Typography>
-                <AccountBalanceOutlinedIcon sx={{ color: '#d4af37', fontSize: 28 }} />
+                <AccountBalanceOutlinedIcon sx={{ color: 'var(--color-church-gold)', fontSize: 28 }} />
               </div>
 
               {/* Meio: Os Dados Bancários */}
@@ -161,13 +161,13 @@ const GivingPage = () => {
 
                 <div className="flex justify-between items-end border-b border-white/10 pb-3">
                   <Typography variant="caption" sx={{ color: '#6b7280' }} className="font-sans tracking-widest uppercase text-[9px] font-bold">Conta Corrente</Typography>
-                  <Typography variant="body2" sx={{ color: '#d4af37' }} className="font-sans tracking-wider text-sm font-bold">1234567-8</Typography>
+                  <Typography variant="body2" sx={{ color: 'var(--color-church-gold)' }} className="font-sans tracking-wider text-sm font-bold">1234567-8</Typography>
                 </div>
 
               </div>
 
               {/* Base do Cartão Traseiro */}
-              <div className="relative z-10 mt-4 border-l-2 border-[#d4af37] pl-4">
+              <div className="relative z-10 mt-4 border-l-2 border-church-gold pl-4">
                 <Typography variant="caption" sx={{ color: '#9ca3af' }} className="font-sans tracking-widest uppercase text-[9px] mb-1 block">Titular da Conta</Typography>
                 <Typography variant="body2" sx={{ color: 'white' }} className="font-sans tracking-widest text-[11px] uppercase mb-1">
                   Igreja Evangélica Koinonia
@@ -186,9 +186,9 @@ const GivingPage = () => {
             ===================================================================== */}
         <button 
           onClick={() => setIsFlipped(!isFlipped)}
-          className="anim-item opacity-0 flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#d4af37]/50 text-white transition-all duration-300 shadow-xl group"
+          className="anim-item opacity-0 flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-church-gold/50 text-white transition-all duration-300 shadow-xl group"
         >
-          <SyncAltIcon className="group-hover:text-[#d4af37] transition-colors group-hover:rotate-180 duration-700" />
+          <SyncAltIcon className="group-hover:text-church-gold transition-colors group-hover:rotate-180 duration-700" />
           <Typography variant="button" className="font-sans tracking-[0.2em] uppercase text-xs font-bold">
             {isFlipped ? 'Ver Chave PIX' : 'Ver Dados Bancários'}
           </Typography>

@@ -111,7 +111,7 @@ const Ministries = () => {
   return (
     <Box ref={sectionRef} className="bg-[#050505] pb-32 pt-10 relative overflow-hidden flex flex-col justify-center">
       
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-[#d4af37]/5 blur-[150px] pointer-events-none rounded-full z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-church-gold/5 blur-[150px] pointer-events-none rounded-full z-0"></div>
 
       <Container maxWidth="xl" className="relative z-10">
         
@@ -124,7 +124,7 @@ const Ministries = () => {
                 onClick={() => handleFilterClick(filter)}
                 className={`font-sans text-[10px] md:text-xs tracking-[0.15em] uppercase px-6 py-3 rounded-full transition-all duration-300 ${
                   activeFilter === filter 
-                    ? 'bg-[#d4af37] text-black font-bold shadow-[0_0_20px_rgba(212,175,55,0.4)]' 
+                    ? 'bg-church-gold text-black font-bold shadow-[0_0_20px_rgba(212,175,55,0.4)]' 
                     : 'text-gray-400 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -140,7 +140,7 @@ const Ministries = () => {
             <div 
               key={ministry.id} 
               // OPACITY-0: Garante que estão escondidos ao iniciar a página!
-              className="accordion-item opacity-0 group relative overflow-hidden rounded-sm cursor-pointer flex-1 hover:flex-4 border border-white/5 hover:border-[#d4af37]/50"
+              className="accordion-item opacity-0 group relative overflow-hidden rounded-sm cursor-pointer flex-1 hover:flex-4 border border-white/5 hover:border-church-gold/50"
               onClick={() => handleOpenModal(ministry)}
               // O bloqueio de transição CSS (para não sumir ao passar o rato)
               style={{
@@ -159,7 +159,7 @@ const Ministries = () => {
               </div>
 
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end items-start opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 transform translate-y-8 group-hover:translate-y-0">
-                <Typography variant="caption" className="bg-[#d4af37]/20 backdrop-blur-md border border-[#d4af37]/30 text-[#d4af37] font-sans tracking-[0.2em] uppercase px-3 py-1 rounded-sm text-[8px] mb-4">
+                <Typography variant="caption" className="bg-church-gold/20 backdrop-blur-md border border-church-gold/30 text-church-gold font-sans tracking-[0.2em] uppercase px-3 py-1 rounded-sm text-[8px] mb-4">
                   {ministry.category}
                 </Typography>
                 <Typography variant="h3" sx={{ color: 'white' }} className="font-serif tracking-widest uppercase mb-4 leading-none drop-shadow-lg" style={{ fontSize: '2.5rem' }}>
@@ -169,10 +169,10 @@ const Ministries = () => {
                   {ministry.desc}
                 </Typography>
                 <button className="flex items-center gap-3 text-white group/btn">
-                  <span className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover/btn:bg-[#d4af37] group-hover/btn:border-[#d4af37] transition-all duration-300">
+                  <span className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover/btn:bg-church-gold group-hover/btn:border-church-gold transition-all duration-300">
                     <ArrowOutwardIcon sx={{ fontSize: 18 }} className="group-hover/btn:text-black transition-colors" />
                   </span>
-                  <Typography variant="overline" className="font-sans tracking-widest text-[10px] uppercase font-bold group-hover/btn:text-[#d4af37] transition-colors">
+                  <Typography variant="overline" className="font-sans tracking-widest text-[10px] uppercase font-bold group-hover/btn:text-church-gold transition-colors">
                     Saber Mais
                   </Typography>
                 </button>
@@ -186,13 +186,13 @@ const Ministries = () => {
       {/* MODAL DETALHES */}
       {selectedMinistry && (
         <Dialog open={isModalOpen} onClose={handleCloseModal} maxWidth="md" fullWidth PaperProps={{ sx: { backgroundColor: '#050505', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 50px rgba(0,0,0,0.7)', p: 0 } }}>
-          <IconButton onClick={handleCloseModal} sx={{ position: 'absolute', right: 16, top: 16, color: 'rgba(255,255,255,0.5)', '&:hover': { color: '#d4af37' }, zIndex: 1300 }} ><CloseIcon /></IconButton>
+          <IconButton onClick={handleCloseModal} sx={{ position: 'absolute', right: 16, top: 16, color: 'rgba(255,255,255,0.5)', '&:hover': { color: 'var(--color-church-gold)' }, zIndex: 1300 }} ><CloseIcon /></IconButton>
           <DialogContent className="p-0 overflow-hidden" sx={{ backgroundColor: '#050505' }}>
             <div className="flex flex-col md:flex-row w-full relative z-10" style={{ minHeight: '450px' }}>
               <div className="w-full md:w-5/12 relative shrink-0" style={{ minHeight: '300px' }}>
                 <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${selectedMinistry.image})` }} ></div>
                 <div className="absolute inset-0 bg-linear-to-t from-[#050505] to-transparent md:hidden"></div>
-                <div className="absolute top-6 left-6 bg-[#050505]/60 backdrop-blur-md border border-[#d4af37]/30 text-[#d4af37] font-sans tracking-[0.2em] uppercase px-3 py-1 rounded-sm text-[9px]">
+                <div className="absolute top-6 left-6 bg-[#050505]/60 backdrop-blur-md border border-church-gold/30 text-church-gold font-sans tracking-[0.2em] uppercase px-3 py-1 rounded-sm text-[9px]">
                   {selectedMinistry.category}
                 </div>
               </div>
@@ -200,31 +200,31 @@ const Ministries = () => {
                 <Typography variant="h3" sx={{ color: 'white' }} className="font-serif uppercase tracking-widest mb-6 leading-tight" style={{ fontSize: '2rem' }}>
                   {selectedMinistry.title}
                 </Typography>
-                <div className="w-16 h-px bg-[#d4af37]/50 mb-8"></div>
+                <div className="w-16 h-px bg-church-gold/50 mb-8"></div>
                 <div className="flex flex-col gap-6 w-full">
                   <div className="flex items-start gap-4 mb-2">
-                    <InfoOutlinedIcon sx={{ fontSize: 22, color: '#d4af37' }} />
+                    <InfoOutlinedIcon sx={{ fontSize: 22, color: 'var(--color-church-gold)' }} />
                     <Box>
-                      <Typography variant="overline" sx={{ color: '#d4af37', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">Sobre o Ministério</Typography>
+                      <Typography variant="overline" sx={{ color: 'var(--color-church-gold)', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">Sobre o Ministério</Typography>
                       <Typography variant="body2" sx={{ color: '#d1d5db' }} className="font-sans text-[13px] leading-relaxed max-w-sm">{selectedMinistry.fullDesc}</Typography>
                     </Box>
                   </div>
                   <div className="flex items-center gap-4">
-                    <PersonOutlineIcon sx={{ fontSize: 22, color: '#d4af37' }} />
+                    <PersonOutlineIcon sx={{ fontSize: 22, color: 'var(--color-church-gold)' }} />
                     <Box>
-                      <Typography variant="overline" sx={{ color: '#d4af37', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">Liderança</Typography>
+                      <Typography variant="overline" sx={{ color: 'var(--color-church-gold)', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">Liderança</Typography>
                       <Typography variant="body2" sx={{ color: '#d1d5db' }} className="font-sans text-[13px]">{selectedMinistry.leader}</Typography>
                     </Box>
                   </div>
                   <div className="flex items-center gap-4">
-                    <AccessTimeIcon sx={{ fontSize: 22, color: '#d4af37' }} />
+                    <AccessTimeIcon sx={{ fontSize: 22, color: 'var(--color-church-gold)' }} />
                     <Box>
-                      <Typography variant="overline" sx={{ color: '#d4af37', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">Encontros</Typography>
+                      <Typography variant="overline" sx={{ color: 'var(--color-church-gold)', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">Encontros</Typography>
                       <Typography variant="body2" sx={{ color: '#d1d5db' }} className="font-sans text-[13px]">{selectedMinistry.schedule}</Typography>
                     </Box>
                   </div>
                 </div>
-                <button className="mt-10 px-8 py-3 bg-[#d4af37] hover:bg-white text-black transition-colors duration-300 font-sans tracking-[0.2em] uppercase text-[10px] font-bold shadow-lg">Quero Fazer Parte</button>
+                <button className="mt-10 px-8 py-3 bg-church-gold hover:bg-white text-black transition-colors duration-300 font-sans tracking-[0.2em] uppercase text-[10px] font-bold shadow-lg">Quero Fazer Parte</button>
               </div>
             </div>
           </DialogContent>

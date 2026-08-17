@@ -81,13 +81,13 @@ const Footer = () => {
   return (
     <Box component="footer" ref={footerRef} className="bg-[#050505] pt-32 pb-10 relative border-t border-white/5 overflow-hidden flex flex-col items-center">
       
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-75 md:w-150 h-75 bg-[#d4af37]/10 blur-[120px] pointer-events-none rounded-full"></div>
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-75 md:w-150 h-75 bg-church-gold/10 blur-[120px] pointer-events-none rounded-full"></div>
 
       <Container maxWidth="md" className="relative z-10 flex flex-col items-center text-center">
         
         <div className="mb-10 relative footer-cross-container flex items-center justify-center">
-           <div ref={crossHaloRef} className="absolute w-12 h-12 border-2 border-[#d4af37] rounded-full opacity-0 pointer-events-none"></div>
-           <Typography variant="h1" className="footer-cross text-[#d4af37] font-serif filter drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] relative z-10" sx={{ fontSize: '3rem' }}>
+           <div ref={crossHaloRef} className="absolute w-12 h-12 border-2 border-church-gold rounded-full opacity-0 pointer-events-none"></div>
+           <Typography variant="h1" className="footer-cross text-church-gold font-serif filter drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] relative z-10" sx={{ fontSize: '3rem' }}>
              ✟
            </Typography>
         </div>
@@ -96,7 +96,7 @@ const Footer = () => {
           {splitTextIntoSpans(verseText)}
         </Typography>
         
-        <Typography variant="subtitle2" className="footer-verse-ref text-[#d4af37] font-sans tracking-[0.3em] uppercase text-xs mb-20 opacity-0">
+        <Typography variant="subtitle2" className="footer-verse-ref text-church-gold font-sans tracking-[0.3em] uppercase text-xs mb-20 opacity-0">
           Salmos 133:1
         </Typography>
 
@@ -107,13 +107,13 @@ const Footer = () => {
         </Typography>
 
         <div className="footer-fade-up flex gap-9  mt-1 opacity-0">
-          <a href="https://www.instagram.com/cekoinonia" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#d4af37] duration-300 transition-transform hover:scale-[1.4]">
+          <a href="https://www.instagram.com/cekoinonia" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-church-gold duration-300 transition-transform hover:scale-[1.4]">
             <InstagramIcon fontSize="large" />
           </a>
-          <a href="https://www.youtube.com/@cekoinonia1522/live" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#d4af37] duration-300 transition-transform hover:scale-[1.4]">
+          <a href="https://www.youtube.com/@cekoinonia1522/live" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-church-gold duration-300 transition-transform hover:scale-[1.4]">
             <YouTubeIcon fontSize="large" />
           </a>
-          <a href="https://www.facebook.com/cekoinoniacultos" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#d4af37] duration-300 transition-transform hover:scale-[1.4]">
+          <a href="https://www.facebook.com/cekoinoniacultos" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-church-gold duration-300 transition-transform hover:scale-[1.4]">
             <FacebookIcon fontSize="large" />
           </a>
         </div>
@@ -123,7 +123,7 @@ const Footer = () => {
             © {new Date().getFullYear()} COMUNIDADE EVANGÉLICA KOINONIA. TODOS OS DIREITOS RESERVADOS.
           </Typography>
           <Typography variant="caption" className="text-gray-600 font-sans tracking-[0.2em] text-[9px] uppercase flex items-center gap-1">
-            Feito por: <a href="https://viniciusmonteiro.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] hover:text-white transition-colors duration-300 font-bold">V.Monteiro</a>
+            Feito por: <a href="https://viniciusmonteiro.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-church-gold hover:text-white transition-colors duration-300 font-bold">V.Monteiro</a>
           </Typography>
         </div>
 

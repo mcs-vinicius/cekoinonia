@@ -76,17 +76,17 @@ const Leaders = () => {
 
   return (
     <Box ref={sectionRef} className="bg-[#050505] py-32 relative border-t border-white/5 overflow-hidden flex flex-col items-center">
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-75 md:w-150 h-75 bg-[#d4af37]/10 blur-[120px] pointer-events-none rounded-full z-0"></div>
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-75 md:w-150 h-75 bg-church-gold/10 blur-[120px] pointer-events-none rounded-full z-0"></div>
 
       <Container maxWidth="lg" className="relative z-10 flex flex-col items-center text-center">
         
         <Box className="text-center mb-20 max-w-3xl mx-auto px-4">
           <div className="leaders-header-item mb-4 opacity-0 flex items-center justify-center gap-2">
-             <span className="text-[#d4af37] text-2xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">✟</span>
-             <span className="text-[#d4af37] text-2xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">♥</span>
+             <span className="text-church-gold text-2xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">✟</span>
+             <span className="text-church-gold text-2xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">♥</span>
           </div>
-          <Typography variant="h6" className="leaders-header-item text-[#d4af37] tracking-[0.4em] font-serif mb-4 uppercase text-sm opacity-0">Nossos Pastores</Typography>
-          <Typography variant="h3" className="leaders-title text-white font-serif tracking-widest uppercase mb-8 opacity-0" sx={{ fontSize: { xs: '2rem', md: '2.8rem' } }}>Liderança <span className="text-[#d4af37] italic">Koinonia</span></Typography>
+          <Typography variant="h6" className="leaders-header-item text-church-gold tracking-[0.4em] font-serif mb-4 uppercase text-sm opacity-0">Nossos Pastores</Typography>
+          <Typography variant="h3" className="leaders-title text-white font-serif tracking-widest uppercase mb-8 opacity-0" sx={{ fontSize: { xs: '2rem', md: '2.8rem' } }}>Liderança <span className="text-church-gold italic">Koinonia</span></Typography>
           <div className="leaders-header-item w-24 h-px bg-white/20 opacity-0 mx-auto"></div>
         </Box>
 
@@ -94,7 +94,7 @@ const Leaders = () => {
           {leadersData.map((leader) => (
             <div 
               key={leader.id} 
-              className="leader-card group opacity-0 relative overflow-hidden rounded-sm cursor-pointer border border-white/5 hover:border-[#d4af37]/40 transition-colors duration-500 aspect-3/4"
+              className="leader-card group opacity-0 relative overflow-hidden rounded-sm cursor-pointer border border-white/5 hover:border-church-gold/40 transition-colors duration-500 aspect-3/4"
               onClick={() => handleOpenModal(leader)}
             >
               <div 
@@ -105,13 +105,13 @@ const Leaders = () => {
               <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-[#050505] via-[#050505]/80 to-transparent opacity-90"></div>
 
               <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col items-start text-left transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <Typography variant="subtitle2" sx={{ color: '#d4af37' }} className="font-sans tracking-[0.2em] uppercase text-[9px] mb-2">
+                <Typography variant="subtitle2" sx={{ color: 'var(--color-church-gold)' }} className="font-sans tracking-[0.2em] uppercase text-[9px] mb-2">
                   {leader.role}
                 </Typography>
                 <Typography variant="h6" sx={{ color: 'white' }} className="font-serif tracking-widest uppercase mb-4 leading-tight" style={{ fontSize: '1.2rem' }}>
                   {leader.name}
                 </Typography>
-                <div className="w-0 h-px bg-[#d4af37] group-hover:w-12 transition-all duration-700 delay-100 mb-4"></div>
+                <div className="w-0 h-px bg-church-gold group-hover:w-12 transition-all duration-700 delay-100 mb-4"></div>
                 <Box className="inline-flex items-center gap-2 text-gray-400">
                   <InstagramIcon sx={{ fontSize: 16 }} />
                   <Typography variant="caption" className="font-sans text-[10px] tracking-widest">{leader.instagram}</Typography>
@@ -168,24 +168,24 @@ const Leaders = () => {
               {/* Lado Direito: Informações */}
               <div className="w-full md:w-7/12 p-10 md:p-14 flex flex-col justify-center items-start">
                 <Box className="mb-6">
-                   <span className="text-[#d4af37] text-2xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">✟</span>
+                   <span className="text-church-gold text-2xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">✟</span>
                 </Box>
                 
                 <Typography variant="h4" sx={{ color: 'white' }} className="font-serif uppercase tracking-widest mb-2 leading-none" style={{ fontSize: '2.2rem' }}>
                   {selectedLeader.name}
                 </Typography>
-                <Typography variant="subtitle2" sx={{ color: '#d4af37' }} className="font-sans tracking-[0.3em] uppercase text-xs mb-10">
+                <Typography variant="subtitle2" sx={{ color: 'var(--color-church-gold)' }} className="font-sans tracking-[0.3em] uppercase text-xs mb-10">
                   {selectedLeader.role}
                 </Typography>
 
-                <div className="w-16 h-px bg-[#d4af37]/50 mb-10"></div>
+                <div className="w-16 h-px bg-church-gold/50 mb-10"></div>
 
                 <div className="flex flex-col gap-8 w-full">
                   {/* Bloco de Formação */}
                   <div className="flex items-start gap-4">
-                    <SchoolIcon sx={{ fontSize: 22, color: '#d4af37' }} />
+                    <SchoolIcon sx={{ fontSize: 22, color: 'var(--color-church-gold)' }} />
                     <Box>
-                      <Typography variant="overline" sx={{ color: '#d4af37', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">
+                      <Typography variant="overline" sx={{ color: 'var(--color-church-gold)', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">
                         Formação
                       </Typography>
                       <Typography variant="body2" sx={{ color: '#d1d5db' }} className="font-sans text-xs md:text-[13px] leading-relaxed max-w-sm">
@@ -196,9 +196,9 @@ const Leaders = () => {
                   
                   {/* Bloco de Descrição */}
                   <div className="flex items-start gap-4">
-                    <DescriptionIcon sx={{ fontSize: 22, color: '#d4af37' }} />
+                    <DescriptionIcon sx={{ fontSize: 22, color: 'var(--color-church-gold)' }} />
                     <Box>
-                      <Typography variant="overline" sx={{ color: '#d4af37', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">
+                      <Typography variant="overline" sx={{ color: 'var(--color-church-gold)', lineHeight: 1 }} className="font-sans tracking-widest text-[10px] uppercase font-bold block mb-1">
                         Descrição
                       </Typography>
                       <Typography variant="body2" sx={{ color: '#d1d5db' }} className="font-sans text-xs md:text-[13px] leading-relaxed max-w-sm">

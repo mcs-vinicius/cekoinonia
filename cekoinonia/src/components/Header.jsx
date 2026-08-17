@@ -129,13 +129,13 @@ const Header = () => {
                     to={link.path}
                     onClick={handleNavigation}
                     className={`relative text-[11px] font-sans tracking-[0.2em] uppercase font-bold transition-all duration-300 py-2 group ${
-                      isActive ? 'text-[#d4af37]' : 'text-gray-400 hover:text-white'
+                      isActive ? 'text-church-gold' : 'text-gray-400 hover:text-white'
                     }`}
                   >
                     {link.title}
                     
                     {/* Alterado de h-[2px] para h-0.5 */}
-                    <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.8)] transition-transform duration-300 origin-left ${
+                    <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-church-gold shadow-[0_0_10px_rgba(212,175,55,0.8)] transition-transform duration-300 origin-left ${
                       isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100 group-hover:bg-white'
                     }`}></span>
                   </Link>
@@ -149,21 +149,21 @@ const Header = () => {
               rel="noopener noreferrer"
               className={`hidden md:flex items-center gap-3 px-6 py-2 rounded-full border transition-all duration-500 group ${
                 isLive 
-                  ? 'border-[#d4af37]/50 bg-[#d4af37]/5 hover:bg-[#d4af37] hover:border-[#d4af37]'
+                  ? 'border-church-gold/50 bg-church-gold/5 hover:bg-church-gold hover:border-church-gold'
                   : 'border-white/10 hover:border-white/30 hover:bg-white/5' 
               }`}
             >
               {isLive ? (
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75 group-hover:bg-black"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#d4af37] group-hover:bg-black transition-colors"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-church-gold opacity-75 group-hover:bg-black"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-church-gold group-hover:bg-black transition-colors"></span>
                 </span>
               ) : (
                 <YouTubeIcon sx={{ fontSize: 18 }} className="text-gray-400 group-hover:text-white transition-colors" />
               )}
               
               <Typography variant="button" className={`text-[10px] tracking-[0.2em] uppercase font-sans font-bold transition-colors ${
-                isLive ? 'text-[#d4af37] group-hover:text-black' : 'text-gray-400 group-hover:text-white'
+                isLive ? 'text-church-gold group-hover:text-black' : 'text-gray-400 group-hover:text-white'
               }`}>
                 {isLive ? 'Ao Vivo' : 'Canal'}
               </Typography>
@@ -174,7 +174,7 @@ const Header = () => {
                 size="large" 
                 onClick={() => setMobileOpen(!mobileOpen)}
                 disableRipple
-                sx={{ color: mobileOpen ? 'white' : '#d4af37' }}
+                sx={{ color: mobileOpen ? 'white' : 'var(--color-church-gold)' }}
               >
                 {mobileOpen ? <CloseIcon /> : <MenuIcon />}
               </IconButton>
@@ -189,7 +189,7 @@ const Header = () => {
         style={{ zIndex: 1200 }}
         className="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl flex flex-col justify-center px-8 opacity-0 pointer-events-none md:hidden"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-75 h-75 bg-[#d4af37]/5 blur-[100px] pointer-events-none rounded-full"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-75 h-75 bg-church-gold/5 blur-[100px] pointer-events-none rounded-full"></div>
 
         <ul className="flex flex-col gap-8 w-full relative z-10 text-center">
           {navLinks.map((link) => {
@@ -200,7 +200,7 @@ const Header = () => {
                   to={link.path} 
                   onClick={handleNavigation}
                   className={`font-serif text-3xl tracking-widest uppercase transition-colors inline-block ${
-                    isActive ? 'text-[#d4af37]' : 'text-white hover:text-[#d4af37]'
+                    isActive ? 'text-church-gold' : 'text-white hover:text-church-gold'
                   }`}
                 >
                   {link.title}
@@ -219,14 +219,14 @@ const Header = () => {
               onClick={handleNavigation}
               className={`w-full flex items-center justify-center gap-4 py-4 rounded-full border transition-all duration-300 group ${
                 isLive 
-                  ? 'border-[#d4af37] bg-[#d4af37]/10 text-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.15)]'
+                  ? 'border-church-gold bg-church-gold/10 text-church-gold shadow-[0_0_20px_rgba(212,175,55,0.15)]'
                   : 'border-white/20 text-gray-400 hover:border-white/50'
               }`}
             >
               {isLive ? (
                 <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[#d4af37]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-church-gold opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-church-gold"></span>
                 </span>
               ) : (
                 <YouTubeIcon sx={{ fontSize: 24 }} />

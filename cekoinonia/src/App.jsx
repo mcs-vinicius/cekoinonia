@@ -28,7 +28,9 @@ function App() {
         
         <main className="grow">
           <Routes>
-            <Route path="/" element={<Home />} />
+            {/* `ready` avisa o Hero que o splash saiu da frente, para a
+                animação de entrada dele não rodar escondida por trás. */}
+            <Route path="/" element={<Home ready={!loading} />} />
             <Route path="/sobre" element={<AboutPage />} /> 
             <Route path="/ministerios" element={<MinistriesPage />} /> 
             <Route path="/doacoes" element={<GivingPage />} /> 

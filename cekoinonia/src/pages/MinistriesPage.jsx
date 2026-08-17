@@ -39,11 +39,11 @@ const MinistriesPage = () => {
         <div className="absolute inset-0 bg-linear-to-t from-[#050505] via-[#050505]/70 to-[#050505]/30"></div>
         
         <div className="relative z-10 text-center px-4 mt-10">
-          <Typography variant="h6" className="banner-element text-[#d4af37] tracking-[0.4em] font-serif mb-4 uppercase text-sm opacity-0">
+          <Typography variant="h6" className="banner-element text-church-gold tracking-[0.4em] font-serif mb-4 uppercase text-sm opacity-0">
             A Nossa Família
           </Typography>
           <Typography variant="h2" className="banner-element text-white font-serif tracking-widest uppercase mb-6 opacity-0" sx={{ fontSize: { xs: '2.5rem', md: '4.5rem' } }}>
-            Nossos <span className="text-[#d4af37] italic">Ministérios</span>
+            Nossos <span className="text-church-gold italic">Ministérios</span>
           </Typography>
           <div className="banner-element w-24 h-px bg-white/20 opacity-0 mx-auto"></div>
         </div>
@@ -56,7 +56,7 @@ const MinistriesPage = () => {
         <Container maxWidth="md" className="text-center flex flex-col items-center">
           
           <Box className="mb-10 page-intro-element opacity-0">
-            <span className="text-[#d4af37] text-3xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">✟</span>
+            <span className="text-church-gold text-3xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">✟</span>
           </Box>
 
           {/* Texto Único, Grande e Centralizado (Sem mistura de fontes) */}
@@ -68,7 +68,7 @@ const MinistriesPage = () => {
             "Acreditamos que cada pessoa foi dotada por Deus com talentos e paixões únicas. Na Koinonia, os nossos ministérios são canais vivos onde a fé se traduz em ação, serviço e comunhão genuína."
           </Typography>
           
-          <div className="page-intro-element w-24 h-px bg-[#d4af37]/30 opacity-0 mx-auto mt-12"></div>
+          <div className="page-intro-element w-24 h-px bg-church-gold/30 opacity-0 mx-auto mt-12"></div>
           
         </Container>
       </Box>

@@ -1,14 +1,25 @@
-/* Cinzel e Inter alimentam os utilitários font-serif / font-sans do @theme abaixo
-   (usados em quase todo o site). Cormorant Garamond e Julius Sans One são usadas
-   apenas pelo Hero. Marcellus segue como alternativa ao título do Hero — se voltar
-   a usá-la, é preciso adicioná-la a este import. */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Julius+Sans+One&display=swap');
+/* Três famílias fazem o trabalho: Cormorant Garamond nos títulos (font-display),
+   Cinzel só nos rótulos maiúsculos pequenos (font-serif) e Inter no texto corrido
+   (font-sans). Julius Sans One é exclusiva do título da Hero; Great Vibes, do splash. */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Julius+Sans+One&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-church-dark: #1A1A1A;
+  /* Os pretos são quentes de propósito. Contra um neutro frio (#050505, ou os
+     text-gray-* do Tailwind, que puxam para o azul) o dourado lê como "uma cor
+     aplicada"; contra um preto quente, lê como luz. */
+  --color-church-void: #000000;   /* só a cena da cruz — casa com o fundo da imagem */
+  --color-church-dark: #0A0908;
+  --color-church-stone: #14110C;  /* um degrau acima, para alternar as seções */
+
   --color-church-gold: #D4AF37;
+  --color-church-ember: #8A6A22;  /* ouro profundo para filetes e bordas */
+  --color-church-crimson: #9E2F2F; /* tirado do manto. Só aparece na cena. */
+
+  --color-church-parchment: #E6DCCB; /* texto corrido */
   --color-church-gray: #2A2A2A;
+
+  --font-display: "Cormorant Garamond", serif;
   --font-serif: "Cinzel", serif;
   --font-sans: "Inter", sans-serif;
 }
@@ -188,4 +199,213 @@ body {
     .pre-title { --tracking: 0.4em; }
     .hero-cross { width: 22px; margin-bottom: 28px; }
     .accent-line { width: 150px; margin: 26px auto; }
+}
+
+/* ==========================================================
+   NOSSA HISTÓRIA — a cruz de pé e a túnica sendo construída
+   O fundo da foto é preto puro, então a seção usa #000 exato: a imagem
+   sangra na página inteira sem moldura e sem emenda visível. É o motivo
+   de esta ser a única seção que não usa o preto quente das demais.
+   ========================================================== */
+
+.story {
+  position: relative;
+  background: var(--color-church-void);
+  overflow: hidden;
+}
+
+/* A proporção da foto (1536 × 2752) vive aqui, e não na seção: assim o percurso
+   do pano bate com o percurso da rolagem, e os Pilares podem vir depois sem
+   esticar a cena. */
+.story-acts {
+  aspect-ratio: 1536 / 2752;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8vh 0;
+}
+
+/* Os Pilares ficam dentro da mesma seção, sobre o pé da cena já apagado —
+   é o que faz a passagem ler como continuação e não como outra seção. */
+.story-coda {
+  position: relative;
+  padding-bottom: 6rem;
+}
+
+/* Mesma penumbra dos tempos, só que larga: aqui o conteúdo ocupa as três
+   colunas, então a sombra é um campo horizontal em vez de um halo por bloco. */
+.story-coda::before {
+  content: '';
+  position: absolute;
+  inset: -6rem -4rem -2rem;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse 78% 66% at 50% 48%,
+    rgba(0, 0, 0, 0.84) 0%,
+    rgba(0, 0, 0, 0.74) 40%,
+    rgba(0, 0, 0, 0.44) 62%,
+    rgba(0, 0, 0, 0.14) 78%,
+    transparent 92%
+  );
+  pointer-events: none;
+}
+
+.story-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* A luz nascendo sobre a cruz. Um véu preto por cima é muito mais barato de
+   animar do que filter: brightness() numa imagem deste tamanho — e sobre um
+   fundo preto o resultado na tela é o mesmo. */
+.story-shroud {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--color-church-void);
+  pointer-events: none;
+  opacity: 0.94;
+}
+
+/* O traço não é o desenho: é o recorte por onde a foto aparece. Branco porque,
+   numa máscara SVG, branco é opaco.
+
+   Bem mais largo que o pano de propósito. O fundo da foto é preto puro, igual
+   ao da página, então revelar demais não custa nada — e revelar de menos
+   deixaria pedaços de tecido para trás. */
+.cloth-mask {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 620;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.story-copy-track {
+  position: relative;
+  z-index: 2;
+}
+
+.story-beat {
+  display: flex;
+}
+
+/* A alternância de lado é o que encaixa cada texto num vão escuro da foto. */
+.story-beat--right { justify-content: flex-end; }
+.story-beat--left { justify-content: flex-start; }
+
+.story-copy {
+  position: relative;
+  max-width: 37rem;
+  padding: 3.5rem 3rem;
+}
+
+/* Penumbra atrás do texto.
+
+   O pano é uma fotografia: a largura dele em cada altura é o que é, e muda
+   conforme a proporção da tela. Não dá para garantir um vão preto em toda
+   largura de viewport — então, em vez de brigar com a foto, o texto carrega a
+   própria sombra. Sem contorno e sem caixa: lê como o tecido entrando na
+   penumbra por trás das palavras. */
+/* A caixa é bem maior que o texto e o degradê termina bem antes da borda dela.
+   Com a caixa justa, o ponto em que o gradiente zerava caía quase na aresta e
+   a penumbra desenhava o próprio retângulo por cima do tecido. Sobrando espaço,
+   o apagamento acontece todo dentro da caixa e não há aresta para ver. */
+.story-copy::before {
+  content: '';
+  position: absolute;
+  inset: -7rem -9rem;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.86) 0%,
+    rgba(0, 0, 0, 0.8) 26%,
+    rgba(0, 0, 0, 0.58) 44%,
+    rgba(0, 0, 0, 0.26) 60%,
+    rgba(0, 0, 0, 0.08) 72%,
+    transparent 82%
+  );
+  pointer-events: none;
+}
+
+.story-greek {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1;
+  color: var(--color-church-gold);
+}
+
+.story-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.15;
+  color: #fff;
+}
+
+.story-body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.95;
+  color: var(--color-church-parchment);
+}
+
+/* ---------- Variante estática (/sobre) ---------- */
+/* A cena já vem inteira, então a seção não precisa da altura extra que a
+   construção do pano exige. */
+.story--static {
+  aspect-ratio: auto;
+}
+
+.story--static .story-acts {
+  aspect-ratio: auto;
+  padding: 8rem 0;
+  gap: 5rem;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 767px) {
+  /* Em retrato a foto já é alta o bastante: manter a proporção dela deixaria a
+     seção com mais de quatro telas de rolagem só para os três textos. */
+  .story-acts {
+    aspect-ratio: auto;
+    padding: 4rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .story-beat,
+  .story-beat--right,
+  .story-beat--left {
+    justify-content: flex-start;
+  }
+
+  .story-copy {
+    max-width: none;
+    padding: 2.5rem 0;
+  }
+
+  /* No celular o pano já está mais apagado, então a penumbra pode ser mais
+     fraca e mais espalhada — assim ela para de revelar a própria borda
+     retangular por cima do tecido. */
+  .story-copy::before {
+    inset: -1rem -3rem;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.28) 76%,
+      transparent 96%
+    );
+  }
+
+  /* A cena passa por trás da coluna de texto, então recua para não competir. */
+  .story-scene { opacity: 0.6; }
+
+  .cloth-mask { stroke-width: 760; }
 }

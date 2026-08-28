@@ -131,7 +131,7 @@ const NewsSection = () => {
   const currentItem = newsData[currentIndex];
 
   return (
-    <Box ref={newsRef} className="bg-[#050505] py-32 relative overflow-hidden border-t border-white/5">
+    <Box ref={newsRef} className="bg-church-dark py-32 relative overflow-hidden">
       <Container maxWidth="xl">
         
         {/* TÍTULO DA SECÇÃO */}
@@ -139,7 +139,7 @@ const NewsSection = () => {
           <Typography variant="h6" className="news-subtitle inline-block text-church-gold tracking-[0.4em] font-serif mb-4 uppercase text-sm">
             Fique por Dentro
           </Typography>
-          <Typography variant="h3" className="text-white font-serif tracking-widest uppercase flex justify-center gap-4 flex-wrap" sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}>
+          <Typography variant="h3" className="text-white font-display flex justify-center gap-3 flex-wrap" sx={{ fontSize: { xs: '2.5rem', md: '3.6rem' } }}>
             <span className="news-word-left inline-block">Próximos</span>
             <span className="text-church-gold italic news-word-right inline-block">Eventos</span>
           </Typography>
@@ -151,7 +151,7 @@ const NewsSection = () => {
           <div className="flex flex-col md:flex-row bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-2xl">
             
             <div className="w-full md:w-[15%] flex md:flex-col items-center justify-center p-6 border-b md:border-b-0 md:border-r border-white/10 shrink-0 bg-linear-to-b from-[#0a0a0a] to-[#050505]">
-              <Typography variant="h2" className="text-church-gold font-serif leading-none drop-shadow-md">
+              <Typography variant="h2" className="text-church-gold font-display leading-none drop-shadow-md">
                 {currentItem.dateDay}
               </Typography>
               <Typography variant="subtitle1" className="text-white font-sans tracking-[0.3em] uppercase mt-2">
@@ -172,10 +172,10 @@ const NewsSection = () => {
               <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent opacity-90"></div>
 
               <div className="absolute bottom-0 left-0 w-full p-8 md:p-12">
-                <Typography variant="h4" className="text-white font-serif mb-3 tracking-wide drop-shadow-lg" sx={{ fontSize: { xs: '1.5rem', md: '2.2rem' } }}>
+                <Typography variant="h4" className="text-white font-display mb-3 drop-shadow-lg" sx={{ fontSize: { xs: '1.5rem', md: '2.2rem' } }}>
                   {currentItem.title}
                 </Typography>
-                <Typography variant="body1" className="text-gray-300 font-sans max-w-2xl mb-6 hidden sm:block drop-shadow-md">
+                <Typography variant="body1" className="text-church-parchment font-sans max-w-2xl mb-6 hidden sm:block drop-shadow-md">
                   {currentItem.excerpt}
                 </Typography>
                 <span className="inline-flex items-center gap-2 text-church-gold font-sans text-xs tracking-[0.2em] uppercase border border-church-gold/40 px-6 py-3 hover:bg-church-gold hover:text-black transition-all duration-300 backdrop-blur-sm">
@@ -228,13 +228,13 @@ const NewsSection = () => {
                     <CalendarTodayOutlinedIcon sx={{ fontSize: 14 }} />
                     <Typography variant="caption" className="font-bold tracking-widest uppercase">{selectedEvent.dateDay} DE {selectedEvent.dateMonth}</Typography>
                  </div>
-                 <Typography variant="caption" className="text-gray-400 font-sans tracking-widest uppercase">Evento Especial</Typography>
+                 <Typography variant="caption" className="text-church-parchment/70 font-sans tracking-widest uppercase">Evento Especial</Typography>
               </div>
 
-              <Typography variant="h3" className="text-white font-serif mb-4" sx={{ fontSize: { xs: '1.8rem', md: '2.5rem' } }}>{selectedEvent.title}</Typography>
+              <Typography variant="h3" className="text-white font-display mb-4" sx={{ fontSize: { xs: '1.8rem', md: '2.5rem' } }}>{selectedEvent.title}</Typography>
               <Typography variant="subtitle1" className="text-church-gold font-sans mb-8 tracking-wide">📍 {selectedEvent.details}</Typography>
               <div className="w-full h-px bg-white/10 mb-8"></div>
-              <Typography variant="body1" className="text-gray-300 font-sans leading-loose text-justify text-[15px]">{selectedEvent.fullDesc}</Typography>
+              <Typography variant="body1" className="text-church-parchment font-sans leading-loose text-justify text-[15px]">{selectedEvent.fullDesc}</Typography>
             </div>
           </div>
         )}

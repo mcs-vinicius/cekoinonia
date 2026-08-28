@@ -79,7 +79,7 @@ const Footer = () => {
   }, [location.pathname]); // <-- O SEGREDO: A animação refaz-se sempre que a rota muda!
 
   return (
-    <Box component="footer" ref={footerRef} className="bg-[#050505] pt-32 pb-10 relative border-t border-white/5 overflow-hidden flex flex-col items-center">
+    <Box component="footer" ref={footerRef} className="bg-church-void pt-32 pb-10 relative overflow-hidden flex flex-col items-center">
       
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-75 md:w-150 h-75 bg-church-gold/10 blur-[120px] pointer-events-none rounded-full"></div>
 
@@ -92,7 +92,7 @@ const Footer = () => {
            </Typography>
         </div>
         
-        <Typography variant="h4" className="text-white font-serif italic leading-relaxed mb-6 px-4 footer-verse" sx={{ fontSize: { xs: '1.5rem', md: '2.2rem' } }}>
+        <Typography variant="h4" className="text-white font-display italic font-light leading-relaxed mb-6 px-4 footer-verse" sx={{ fontSize: { xs: '1.9rem', md: '3rem' } }}>
           {splitTextIntoSpans(verseText)}
         </Typography>
         
@@ -107,22 +107,22 @@ const Footer = () => {
         </Typography>
 
         <div className="footer-fade-up flex gap-9  mt-1 opacity-0">
-          <a href="https://www.instagram.com/cekoinonia" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-church-gold duration-300 transition-transform hover:scale-[1.4]">
+          <a href="https://www.instagram.com/cekoinonia" target="_blank" rel="noopener noreferrer" className="text-church-parchment/35 hover:text-church-gold duration-300 transition-transform hover:scale-[1.4]">
             <InstagramIcon fontSize="large" />
           </a>
-          <a href="https://www.youtube.com/@cekoinonia1522/live" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-church-gold duration-300 transition-transform hover:scale-[1.4]">
+          <a href="https://www.youtube.com/@cekoinonia1522/live" target="_blank" rel="noopener noreferrer" className="text-church-parchment/35 hover:text-church-gold duration-300 transition-transform hover:scale-[1.4]">
             <YouTubeIcon fontSize="large" />
           </a>
-          <a href="https://www.facebook.com/cekoinoniacultos" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-church-gold duration-300 transition-transform hover:scale-[1.4]">
+          <a href="https://www.facebook.com/cekoinoniacultos" target="_blank" rel="noopener noreferrer" className="text-church-parchment/35 hover:text-church-gold duration-300 transition-transform hover:scale-[1.4]">
             <FacebookIcon fontSize="large" />
           </a>
         </div>
 
         <div className="footer-fade-up w-full flex flex-col items-center gap-3 pt-8 border-t border-white/5 opacity-0 mt-8">
-          <Typography variant="caption" className="text-gray-600 font-sans tracking-[0.2em] text-[9px] uppercase text-center">
+          <Typography variant="caption" className="text-church-parchment/35 font-sans tracking-[0.2em] text-[9px] uppercase text-center">
             © {new Date().getFullYear()} COMUNIDADE EVANGÉLICA KOINONIA. TODOS OS DIREITOS RESERVADOS.
           </Typography>
-          <Typography variant="caption" className="text-gray-600 font-sans tracking-[0.2em] text-[9px] uppercase flex items-center gap-1">
+          <Typography variant="caption" className="text-church-parchment/35 font-sans tracking-[0.2em] text-[9px] uppercase flex items-center gap-1">
             Feito por: <a href="https://viniciusmonteiro.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-church-gold hover:text-white transition-colors duration-300 font-bold">V.Monteiro</a>
           </Typography>
         </div>

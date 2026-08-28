@@ -5,7 +5,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SplashScreen from './components/SplashScreen'; // <-- Novo
-import ScrollToTop from './components/ScrollToTop'; // Assumindo que você criou na interação anterior
+import ScrollToTop from './components/ScrollToTop';
+import SmoothScroll from './components/SmoothScroll';
 
 // Páginas
 import Home from './pages/Home';
@@ -23,22 +24,27 @@ function App() {
       {/* Tela de Carregamento animada */}
       {loading && <SplashScreen onComplete={() => setLoading(false)} />}
 
-      <div className="min-h-screen bg-[#050505] flex flex-col">
-        <Header />
-        
-        <main className="grow">
-          <Routes>
-            {/* `ready` avisa o Hero que o splash saiu da frente, para a
-                animação de entrada dele não rodar escondida por trás. */}
-            <Route path="/" element={<Home ready={!loading} />} />
-            <Route path="/sobre" element={<AboutPage />} /> 
-            <Route path="/ministerios" element={<MinistriesPage />} /> 
-            <Route path="/doacoes" element={<GivingPage />} /> 
-          </Routes>
-        </main>
+      {/* O Header fica fora do SmoothScroll de propósito: ele é `position: fixed`,
+          e dentro do contêiner que o smoother transforma ele deixaria de ser fixo. */}
+      <Header />
 
-        <Footer />
-      </div>
+      <SmoothScroll>
+        <div className="min-h-screen bg-church-dark flex flex-col">
+          <main className="grow">
+            <Routes>
+              {/* `ready` avisa o Hero que o splash saiu da frente, para a
+                  animação de entrada dele não rodar escondida por trás. */}
+              <Route path="/" element={<Home ready={!loading} />} />
+              <Route path="/sobre" element={<AboutPage />} />
+              <Route path="/ministerios" element={<MinistriesPage />} />
+              <Route path="/doacoes" element={<GivingPage />} />
+            </Routes>
+          </main>
+
+          <Footer />
+        </div>
+      </SmoothScroll>
+
     </BrowserRouter>
   );
 }

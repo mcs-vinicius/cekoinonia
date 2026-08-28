@@ -75,7 +75,7 @@ const Leaders = () => {
   };
 
   return (
-    <Box ref={sectionRef} className="bg-[#050505] py-32 relative border-t border-white/5 overflow-hidden flex flex-col items-center">
+    <Box ref={sectionRef} className="bg-church-dark py-32 relative overflow-hidden flex flex-col items-center">
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-75 md:w-150 h-75 bg-church-gold/10 blur-[120px] pointer-events-none rounded-full z-0"></div>
 
       <Container maxWidth="lg" className="relative z-10 flex flex-col items-center text-center">
@@ -86,7 +86,7 @@ const Leaders = () => {
              <span className="text-church-gold text-2xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">♥</span>
           </div>
           <Typography variant="h6" className="leaders-header-item text-church-gold tracking-[0.4em] font-serif mb-4 uppercase text-sm opacity-0">Nossos Pastores</Typography>
-          <Typography variant="h3" className="leaders-title text-white font-serif tracking-widest uppercase mb-8 opacity-0" sx={{ fontSize: { xs: '2rem', md: '2.8rem' } }}>Liderança <span className="text-church-gold italic">Koinonia</span></Typography>
+          <Typography variant="h3" className="leaders-title text-white font-display mb-8 opacity-0" sx={{ fontSize: { xs: '2.5rem', md: '3.6rem' } }}>Liderança <span className="text-church-gold italic">Koinonia</span></Typography>
           <div className="leaders-header-item w-24 h-px bg-white/20 opacity-0 mx-auto"></div>
         </Box>
 
@@ -108,11 +108,11 @@ const Leaders = () => {
                 <Typography variant="subtitle2" sx={{ color: 'var(--color-church-gold)' }} className="font-sans tracking-[0.2em] uppercase text-[9px] mb-2">
                   {leader.role}
                 </Typography>
-                <Typography variant="h6" sx={{ color: 'white' }} className="font-serif tracking-widest uppercase mb-4 leading-tight" style={{ fontSize: '1.2rem' }}>
+                <Typography variant="h6" sx={{ color: 'white' }} className="font-display mb-4 leading-tight" style={{ fontSize: '1.5rem' }}>
                   {leader.name}
                 </Typography>
                 <div className="w-0 h-px bg-church-gold group-hover:w-12 transition-all duration-700 delay-100 mb-4"></div>
-                <Box className="inline-flex items-center gap-2 text-gray-400">
+                <Box className="inline-flex items-center gap-2 text-church-parchment/70">
                   <InstagramIcon sx={{ fontSize: 16 }} />
                   <Typography variant="caption" className="font-sans text-[10px] tracking-widest">{leader.instagram}</Typography>
                 </Box>
@@ -171,7 +171,7 @@ const Leaders = () => {
                    <span className="text-church-gold text-2xl filter drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]">✟</span>
                 </Box>
                 
-                <Typography variant="h4" sx={{ color: 'white' }} className="font-serif uppercase tracking-widest mb-2 leading-none" style={{ fontSize: '2.2rem' }}>
+                <Typography variant="h4" sx={{ color: 'white' }} className="font-display mb-2 leading-none" style={{ fontSize: '2.2rem' }}>
                   {selectedLeader.name}
                 </Typography>
                 <Typography variant="subtitle2" sx={{ color: 'var(--color-church-gold)' }} className="font-sans tracking-[0.3em] uppercase text-xs mb-10">

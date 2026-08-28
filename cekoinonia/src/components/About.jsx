@@ -8,7 +8,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const About = () => {
+const About = ({ bare = false }) => {
   const sectionRef = useRef(null);
 
   const cardsData = [
@@ -37,7 +37,10 @@ const About = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 70%",
+          start: 'top 70%',
+          // Entra ao descer e sai ao subir, como os tempos da cena — sem isto o
+          // padrão é `play none none none` e o bloco toca uma vez só.
+          toggleActions: 'play none none reverse'
         }
       });
 
@@ -58,29 +61,30 @@ const About = () => {
   }, []);
 
   return (
-    <Box ref={sectionRef} className="bg-church-dark py-32 relative">
+    <Box ref={sectionRef} className={bare ? 'relative' : 'bg-church-stone py-32 relative'}>
       <Container maxWidth="lg">
         
         {/* Cabeçalho da Secção */}
         <Box className="text-center mb-24 max-w-4xl mx-auto px-4">
-          <Typography 
-            variant="h3" 
-            className="about-header-item text-church-gold font-serif mb-8 opacity-0"
-            sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}
+          <Typography
+            variant="h3"
+            className="about-header-item text-church-gold font-display mb-6 opacity-0"
+            sx={{ fontSize: { xs: '2.5rem', md: '3.6rem' } }}
           >
             Nossos Pilares
           </Typography>
-          <Typography 
-            variant="body1" 
-            className="about-header-item text-gray-300 font-sans tracking-[0.15em] uppercase opacity-0"
-            sx={{ 
-              fontSize: { xs: '11px', md: '13px' }, 
-              lineHeight: 2.2,
-              wordSpacing: '0.1em'
+          {/* Era uma frase inteira em caixa alta com tracking de 0.15em — bonita de
+              longe, quase impossível de ler de perto. Caixa mista devolve a leitura. */}
+          <Typography
+            variant="body1"
+            className="about-header-item text-church-parchment/75 font-sans font-light opacity-0"
+            sx={{
+              fontSize: { xs: '15px', md: '17px' },
+              lineHeight: 1.95
             }}
           >
-            A Igreja Evangélica Koinonia é um lugar de adoração, comunhão e ensino da Palavra. 
-            O nosso desejo é que se sinta em casa, amado por Deus e acolhido por nós numa verdadeira família de fé.
+            A Igreja Evangélica Koinonia é um lugar de adoração, comunhão e ensino da Palavra.
+            Nosso desejo é que você se sinta em casa, amado por Deus e acolhido por nós numa verdadeira família de fé.
           </Typography>
         </Box>
 
@@ -109,7 +113,7 @@ const About = () => {
               {/* Texto Descritivo */}
               <Typography 
                 variant="body2" 
-                className="text-gray-400 font-sans mb-10"
+                className="text-church-parchment/70 font-sans mb-10"
                 sx={{ 
                   fontSize: '13px', 
                   lineHeight: 1.8,

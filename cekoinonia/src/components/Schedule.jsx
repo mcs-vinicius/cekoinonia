@@ -102,14 +102,14 @@ const Schedule = () => {
   };
 
   return (
-    <Box ref={sectionRef} className="bg-[#050505] flex flex-col justify-center py-32 relative border-t border-white/5 overflow-hidden">
+    <Box ref={sectionRef} className="bg-church-stone flex flex-col justify-center py-32 relative overflow-hidden">
       <Container maxWidth="xl" className="w-full">
         
         <Box className="text-center mb-10 md:mb-16 relative z-10 schedule-title-container overflow-hidden py-4">
           <Typography variant="h6" className="schedule-subtitle inline-block text-church-gold tracking-[0.4em] font-serif mb-4 uppercase text-sm">
             Programe-se
           </Typography>
-          <Typography variant="h3" className="text-white font-serif tracking-widest uppercase flex justify-center gap-4 flex-wrap" sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}>
+          <Typography variant="h3" className="text-white font-display flex justify-center gap-3 flex-wrap" sx={{ fontSize: { xs: '2.5rem', md: '3.6rem' } }}>
             <span className="schedule-word-left inline-block">Nossos</span>
             <span className="text-church-gold italic schedule-word-right inline-block">Horários</span>
           </Typography>
@@ -145,7 +145,7 @@ const Schedule = () => {
                 <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end pointer-events-none">
                   <div className="flex items-center gap-3 md:gap-4 mb-2">
                     <AccessTimeOutlinedIcon className={isActive ? 'text-church-gold' : 'text-white/50'} />
-                    <Typography variant="h4" className="text-white font-serif tracking-widest drop-shadow-lg" sx={{ fontSize: { xs: '1.5rem', md: '2.1rem' } }}>
+                    <Typography variant="h4" className="text-white font-display tracking-wide drop-shadow-lg" sx={{ fontSize: { xs: '1.5rem', md: '2.1rem' } }}>
                       {item.time}
                     </Typography>
                   </div>
@@ -161,7 +161,7 @@ const Schedule = () => {
                     <Typography variant="h6" className="text-white font-sans tracking-[0.15em] uppercase text-xs md:text-sm mb-2 font-bold">
                       {item.title}
                     </Typography>
-                    <Typography variant="body2" className="text-gray-300 font-sans leading-relaxed text-[12px] md:text-[13px] md:max-w-md">
+                    <Typography variant="body2" className="text-church-parchment font-sans leading-relaxed text-[12px] md:text-[13px] md:max-w-md">
                     {item.description.split('\n').map((line, index) => (
                       <React.Fragment key={index}>
                         {line}

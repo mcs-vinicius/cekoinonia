@@ -109,7 +109,7 @@ const Ministries = () => {
   };
 
   return (
-    <Box ref={sectionRef} className="bg-[#050505] pb-32 pt-10 relative overflow-hidden flex flex-col justify-center">
+    <Box ref={sectionRef} className="bg-church-dark pb-32 pt-10 relative overflow-hidden flex flex-col justify-center">
       
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-church-gold/5 blur-[150px] pointer-events-none rounded-full z-0"></div>
 
@@ -125,7 +125,7 @@ const Ministries = () => {
                 className={`font-sans text-[10px] md:text-xs tracking-[0.15em] uppercase px-6 py-3 rounded-full transition-all duration-300 ${
                   activeFilter === filter 
                     ? 'bg-church-gold text-black font-bold shadow-[0_0_20px_rgba(212,175,55,0.4)]' 
-                    : 'text-gray-400 hover:text-white hover:bg-white/10'
+                    : 'text-church-parchment/70 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {filter}
@@ -162,7 +162,7 @@ const Ministries = () => {
                 <Typography variant="caption" className="bg-church-gold/20 backdrop-blur-md border border-church-gold/30 text-church-gold font-sans tracking-[0.2em] uppercase px-3 py-1 rounded-sm text-[8px] mb-4">
                   {ministry.category}
                 </Typography>
-                <Typography variant="h3" sx={{ color: 'white' }} className="font-serif tracking-widest uppercase mb-4 leading-none drop-shadow-lg" style={{ fontSize: '2.5rem' }}>
+                <Typography variant="h3" sx={{ color: 'white' }} className="font-display mb-4 leading-none drop-shadow-lg" style={{ fontSize: '2.5rem' }}>
                   {ministry.title}
                 </Typography>
                 <Typography variant="body2" sx={{ color: '#d1d5db' }} className="font-sans leading-relaxed max-w-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
@@ -192,12 +192,12 @@ const Ministries = () => {
               <div className="w-full md:w-5/12 relative shrink-0" style={{ minHeight: '300px' }}>
                 <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${selectedMinistry.image})` }} ></div>
                 <div className="absolute inset-0 bg-linear-to-t from-[#050505] to-transparent md:hidden"></div>
-                <div className="absolute top-6 left-6 bg-[#050505]/60 backdrop-blur-md border border-church-gold/30 text-church-gold font-sans tracking-[0.2em] uppercase px-3 py-1 rounded-sm text-[9px]">
+                <div className="absolute top-6 left-6 bg-church-void/60 backdrop-blur-md border border-church-gold/30 text-church-gold font-sans tracking-[0.2em] uppercase px-3 py-1 rounded-sm text-[9px]">
                   {selectedMinistry.category}
                 </div>
               </div>
               <div className="w-full md:w-7/12 p-10 md:p-14 flex flex-col justify-center items-start">
-                <Typography variant="h3" sx={{ color: 'white' }} className="font-serif uppercase tracking-widest mb-6 leading-tight" style={{ fontSize: '2rem' }}>
+                <Typography variant="h3" sx={{ color: 'white' }} className="font-display mb-6 leading-tight" style={{ fontSize: '2rem' }}>
                   {selectedMinistry.title}
                 </Typography>
                 <div className="w-16 h-px bg-church-gold/50 mb-8"></div>

@@ -40,7 +40,7 @@ const GivingPage = () => {
   };
 
   return (
-    <div ref={pageRef} className="bg-[#050505] min-h-screen pt-32 pb-32 relative overflow-hidden flex flex-col items-center">
+    <div ref={pageRef} className="bg-church-dark min-h-screen pt-32 pb-32 relative overflow-hidden flex flex-col items-center">
       
       {/* Halo Dourado de Fundo */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-church-gold/5 blur-[150px] pointer-events-none rounded-full z-0"></div>
@@ -54,11 +54,11 @@ const GivingPage = () => {
           <Typography variant="h6" className="anim-item text-church-gold tracking-[0.4em] font-serif mb-4 uppercase text-sm opacity-0">
             Adoração em Ação
           </Typography>
-          <Typography variant="h2" className="anim-item text-white font-serif tracking-widest uppercase mb-8 opacity-0" sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' } }}>
+          <Typography variant="h2" className="anim-item text-white font-display mb-8 opacity-0" sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' } }}>
             Dízimos & <span className="text-church-gold italic">Ofertas</span>
           </Typography>
           <div className="anim-item w-24 h-px bg-church-gold/30 opacity-0 mx-auto mb-8"></div>
-          <Typography variant="body1" className="anim-item opacity-0 text-gray-400 font-sans tracking-wide max-w-xl mx-auto leading-relaxed" sx={{ fontSize: { xs: '13px', md: '14px' } }}>
+          <Typography variant="body1" className="anim-item opacity-0 text-church-parchment/70 font-sans tracking-wide max-w-xl mx-auto leading-relaxed" sx={{ fontSize: { xs: '13px', md: '14px' } }}>
             A sua generosidade permite-nos continuar a nossa missão e expandir o Reino. Utilize o nosso cartão interativo abaixo para encontrar os dados de contribuição.
           </Typography>
         </Box>
@@ -140,7 +140,7 @@ const GivingPage = () => {
             >
               {/* Topo do Cartão Traseiro */}
               <div className="flex justify-between items-start relative z-10">
-                <Typography variant="h5" sx={{ color: 'white' }} className="font-serif tracking-widest uppercase">
+                <Typography variant="h5" sx={{ color: 'white' }} className="font-display tracking-wide">
                   TED / DOC
                 </Typography>
                 <AccountBalanceOutlinedIcon sx={{ color: 'var(--color-church-gold)', fontSize: 28 }} />

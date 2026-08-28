@@ -80,7 +80,7 @@ const LocationSection = () => {
   }, []);
 
   return (
-    <section ref={locationRef} className="flex flex-col md:flex-row w-full min-h-[75vh] bg-[#080808] border-t border-white/5 relative overflow-hidden">
+    <section ref={locationRef} className="flex flex-col md:flex-row w-full min-h-[75vh] bg-church-stone relative overflow-hidden">
       
       {/* ========================================================
           LADO ESQUERDO: TEXTOS E DADOS (Classes 'location-reveal' adicionadas)
@@ -98,16 +98,16 @@ const LocationSection = () => {
         
         <Typography 
           variant="h3" 
-          className="text-church-gold font-serif mb-4 tracking-[0.15em] uppercase location-reveal"
-          sx={{ fontSize: { xs: '1.8rem', md: '2.2rem' } }}
+          className="text-church-gold font-display mb-3 location-reveal"
+          sx={{ fontSize: { xs: '2.4rem', md: '3.2rem' } }}
         >
           Onde Estamos
         </Typography>
         
         <Typography 
           variant="h4" 
-          className="text-white font-serif mb-8 tracking-widest uppercase location-reveal"
-          sx={{ fontSize: '1.1rem', lineHeight: 1.6 }}
+          className="text-church-parchment/70 font-sans mb-8 tracking-[0.2em] uppercase location-reveal"
+          sx={{ fontSize: '0.78rem', lineHeight: 1.6 }}
         >
           Visite a Nossa <span className="text-church-gold italic">Comunidade</span>
         </Typography>
@@ -123,7 +123,7 @@ const LocationSection = () => {
               <Typography variant="subtitle2" className="text-white font-sans tracking-[0.2em] uppercase mb-2 text-xs">
                 Localização
               </Typography>
-              <Typography variant="body2" className="text-gray-400 font-sans tracking-wide text-[13px] leading-relaxed">
+              <Typography variant="body2" className="text-church-parchment/70 font-sans tracking-wide text-[13px] leading-relaxed">
                 R. Carmine Monetti, 471<br/>
                 Jardim das Oliveiras, São Paulo - SP<br/>
                 CEP: 08111-160

@@ -7,6 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
+import ScrollSmoother from 'gsap/ScrollSmoother';
 
 // Importando a foto do logo
 import logoImg from '../assets/logok.png'; 
@@ -71,7 +72,9 @@ const Header = () => {
   };
 
   const handleNavigation = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const smoother = ScrollSmoother.get();
+    if (smoother) smoother.scrollTo(0, true);
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
     if (mobileOpen) setMobileOpen(false);
   };
 
@@ -129,7 +132,7 @@ const Header = () => {
                     to={link.path}
                     onClick={handleNavigation}
                     className={`relative text-[11px] font-sans tracking-[0.2em] uppercase font-bold transition-all duration-300 py-2 group ${
-                      isActive ? 'text-church-gold' : 'text-gray-400 hover:text-white'
+                      isActive ? 'text-church-gold' : 'text-church-parchment/70 hover:text-white'
                     }`}
                   >
                     {link.title}
@@ -159,11 +162,11 @@ const Header = () => {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-church-gold group-hover:bg-black transition-colors"></span>
                 </span>
               ) : (
-                <YouTubeIcon sx={{ fontSize: 18 }} className="text-gray-400 group-hover:text-white transition-colors" />
+                <YouTubeIcon sx={{ fontSize: 18 }} className="text-church-parchment/70 group-hover:text-white transition-colors" />
               )}
               
               <Typography variant="button" className={`text-[10px] tracking-[0.2em] uppercase font-sans font-bold transition-colors ${
-                isLive ? 'text-church-gold group-hover:text-black' : 'text-gray-400 group-hover:text-white'
+                isLive ? 'text-church-gold group-hover:text-black' : 'text-church-parchment/70 group-hover:text-white'
               }`}>
                 {isLive ? 'Ao Vivo' : 'Canal'}
               </Typography>
@@ -187,7 +190,7 @@ const Header = () => {
       <Box 
         ref={menuRef}
         style={{ zIndex: 1200 }}
-        className="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl flex flex-col justify-center px-8 opacity-0 pointer-events-none md:hidden"
+        className="fixed inset-0 bg-church-dark/95 backdrop-blur-2xl flex flex-col justify-center px-8 opacity-0 pointer-events-none md:hidden"
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-75 h-75 bg-church-gold/5 blur-[100px] pointer-events-none rounded-full"></div>
 
@@ -220,7 +223,7 @@ const Header = () => {
               className={`w-full flex items-center justify-center gap-4 py-4 rounded-full border transition-all duration-300 group ${
                 isLive 
                   ? 'border-church-gold bg-church-gold/10 text-church-gold shadow-[0_0_20px_rgba(212,175,55,0.15)]'
-                  : 'border-white/20 text-gray-400 hover:border-white/50'
+                  : 'border-white/20 text-church-parchment/70 hover:border-white/50'
               }`}
             >
               {isLive ? (
@@ -240,7 +243,7 @@ const Header = () => {
         </ul>
         
         <div ref={addToRefs} className="absolute bottom-10 left-0 w-full text-center">
-           <Typography variant="caption" className="text-gray-500 font-sans tracking-[0.3em] text-[9px] uppercase">
+           <Typography variant="caption" className="text-church-parchment/45 font-sans tracking-[0.3em] text-[9px] uppercase">
              Comunidade Koinonia
            </Typography>
         </div>

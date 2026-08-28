@@ -26,7 +26,7 @@ const MinistriesPage = () => {
   }, []);
 
   return (
-    <div ref={pageRef} className="bg-[#050505] min-h-screen pt-24">
+    <div ref={pageRef} className="bg-church-dark min-h-screen pt-24">
       
       {/* =====================================================================
           1. BANNER DE TOPO
@@ -42,7 +42,7 @@ const MinistriesPage = () => {
           <Typography variant="h6" className="banner-element text-church-gold tracking-[0.4em] font-serif mb-4 uppercase text-sm opacity-0">
             A Nossa Família
           </Typography>
-          <Typography variant="h2" className="banner-element text-white font-serif tracking-widest uppercase mb-6 opacity-0" sx={{ fontSize: { xs: '2.5rem', md: '4.5rem' } }}>
+          <Typography variant="h2" className="banner-element text-white font-display mb-6 opacity-0" sx={{ fontSize: { xs: '2.5rem', md: '4.5rem' } }}>
             Nossos <span className="text-church-gold italic">Ministérios</span>
           </Typography>
           <div className="banner-element w-24 h-px bg-white/20 opacity-0 mx-auto"></div>
@@ -52,7 +52,7 @@ const MinistriesPage = () => {
       {/* =====================================================================
           2. SECÇÃO: INTRODUÇÃO (Agora Limpa, Centralizada e Elegante)
           ===================================================================== */}
-      <Box className="py-24 md:py-32 bg-[#050505] relative z-10 flex flex-col items-center justify-center">
+      <Box className="py-24 md:py-32 bg-church-stone relative z-10 flex flex-col items-center justify-center">
         <Container maxWidth="md" className="text-center flex flex-col items-center">
           
           <Box className="mb-10 page-intro-element opacity-0">
@@ -62,7 +62,7 @@ const MinistriesPage = () => {
           {/* Texto Único, Grande e Centralizado (Sem mistura de fontes) */}
           <Typography 
             variant="h5" 
-            className="page-intro-element opacity-0 text-gray-300 font-sans leading-loose text-center px-4" 
+            className="page-intro-element opacity-0 text-church-parchment font-sans leading-loose text-center px-4" 
             sx={{ fontSize: { xs: '1.1rem', md: '1.4rem' }, fontWeight: 300 }}
           >
             "Acreditamos que cada pessoa foi dotada por Deus com talentos e paixões únicas. Na Koinonia, os nossos ministérios são canais vivos onde a fé se traduz em ação, serviço e comunhão genuína."
